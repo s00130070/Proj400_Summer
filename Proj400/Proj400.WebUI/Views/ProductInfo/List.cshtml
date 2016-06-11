@@ -1,0 +1,19 @@
+﻿@model IEnumerable<ProductInfo>
+@using Proj400.Domain.Entities
+
+@{
+    ViewBag.Title = "Products";
+}
+
+<h2>List</h2>
+
+ @foreach (var p in Model) {
+     <div>
+        <h3>@p.product_Name</h3>
+         @p.product_Desc
+         @*convert Price property to a string using  ToString("c") method, this renders numerical values as currency*@
+         @*Currency depends on sever local *@
+         <h4>@p.product_Price.ToString("c")</h4>
+     </div>
+
+ }
