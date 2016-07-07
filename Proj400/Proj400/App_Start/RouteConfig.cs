@@ -13,11 +13,20 @@ namespace Proj400
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //Default
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "ProductInfo", action = "Home", id = UrlParameter.Optional }
             );
+
+            //Other Routes
+          routes.MapRoute(
+               name: "null",
+               url: "Page{page}",
+               defaults: new { controller = "Product", action = "List"}
+          );
+
         }
     }
 }

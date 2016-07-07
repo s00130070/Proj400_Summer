@@ -153,11 +153,16 @@
     <Compile Include="Concrete\EFDbContext.cs" />
     <Compile Include="Concrete\EFProductRepository.cs" />
     <Compile Include="Controllers\ProductInfoController.cs" />
+    <Compile Include="HtmlHelpers\PaginationHelper.cs" />
+    <Compile Include="Models\Entities\Cart.cs" />
+    <Compile Include="Models\Entities\CartRow.cs" />
+    <Compile Include="Models\Entities\PagingInfo.cs" />
     <Compile Include="Models\Entities\ProductInfo.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
+    <Compile Include="Models\Entities\ProductsList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -169,6 +174,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\ProductInfo\Home.cshtml" />
     <Content Include="Views\ProductInfo\Cart.cshtml" />
+    <Content Include="Views\ProductInfo\ProductSummary.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
