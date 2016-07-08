@@ -16,39 +16,32 @@ namespace Proj400.Controllers
             repository = repo;
         }
 
-        public ViewResult Index(string returnUrl) {
+        public ViewResult Index(Cart cart, string returnUrl) {
             return View(new CartIndex
             {
-                Cart = GetCart(),
-                ReturnUrl = returnUrl
+                ReturnUrl = returnUrl,
+                Cart = cart
+               
             });
 
         }
 
-        private Cart GetCart() {
-            Cart cart = (Cart)Session["Cart"];
-            if (cart == null)
-            {
-                cart = new Cart();
-                Session["Cart"] = cart;
-            }
-            return cart;
-        }
-        public RedirectToRouteResult AddToCart(int product_Id, string returnUrl) {
+  
+        public RedirectToRouteResult AddToCart(Cart cart, int product_Id, string returnUrl) {
             ProductInfo productInfo = repository.ProductInfos.FirstOrDefault(p => p.product_ID == product_Id);
             if (productInfo != null)
             {
-                GetCart().AddItem(productInfo, 1);
+                cart.AddItem(productInfo, 1);
             }
             return RedirectToAction("Index", new { returnUrl });
 
         }
-        public RedirectToRouteResult RemoveFromCart(int productId, string returnUrl)
+        public RedirectToRouteResult RemoveFromCart(Cart cart, int product_ID, string returnUrl)
         {
-            ProductInfo productInfo = repository.ProductInfos.FirstOrDefault(p => p.product_ID == productId);
+            ProductInfo productInfo = repository.ProductInfos.FirstOrDefault(p => p.product_ID == product_ID);
             if (productInfo != null)
             {
-                GetCart().RemoveRow(productInfo);
+                cart.RemoveRow(productInfo);
             }
             return RedirectToAction("Index", new { returnUrl });
 

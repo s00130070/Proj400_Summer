@@ -38,10 +38,12 @@
                         @((row.product_Quantity * row.Product.product_Price).ToString("c"))
                     </td>
                     <td>
-                        <button type="button" class="btn btn-danger btn-sm">
-                            <span class="glyphicon glyphicon-remove"></span> Remove
-                        </button>
-                    </td>
+                        @using (Html.BeginForm("RemoveFromCart","Cart")) {
+                            @Html.Hidden("Product_ID",row.Product.product_ID)
+                            @Html.HiddenFor(x => x.ReturnUrl)
+                                <input class="btn btn-danger btn-sm" type="submit" value="Remove" />
+                        }
+                     </td>
 
                 </tr>
             }
@@ -69,3 +71,5 @@
         </tfoot>
     </table>
 </div>
+
+
