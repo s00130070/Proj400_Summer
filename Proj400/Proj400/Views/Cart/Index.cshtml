@@ -61,9 +61,11 @@
                             </button>
                         </td>
                         <td>
-                            <button type="button" class="btn btn-success">
+
+                    @Html.ActionLink("Checkout now", "CheckoutShipping", null, new {  @class = "btn btn-success" })
+                            @*<button type="button" class="btn btn-success">
                                 Checkout <span class="glyphicon glyphicon-play"></span>
-                            </button>
+                            </button>*@
                         </td>
                     </tr>
         <tfoot>

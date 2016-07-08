@@ -47,5 +47,18 @@ namespace Proj400.Controllers
 
         }
 
+        public PartialViewResult CartNavSummary(Cart cart) {
+            return PartialView(cart);
+        }
+
+        public ViewResult CheckoutShipping()
+        {
+            return View(new OrderInfo());
+        }
+
+        public ViewResult Payment()
+        {
+            return View("Payment");
+        }
     }
 }

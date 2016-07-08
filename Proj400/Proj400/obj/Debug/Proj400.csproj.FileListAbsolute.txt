@@ -46,3 +46,4 @@ C:\Users\John\Desktop\Proj400\Proj400\Proj400\bin\System.Web.Mvc.xml
 C:\Users\John\Desktop\Proj400\Proj400\Proj400\obj\Debug\Proj400.csprojResolveAssemblyReference.cache
 C:\Users\John\Desktop\Proj400\Proj400\Proj400\obj\Debug\Proj400.WebUI.dll
 C:\Users\John\Desktop\Proj400\Proj400\Proj400\obj\Debug\Proj400.WebUI.pdb
+C:\Users\John\Desktop\Proj400\Proj400\Proj400\bin\Braintree-2.61.0.dll
