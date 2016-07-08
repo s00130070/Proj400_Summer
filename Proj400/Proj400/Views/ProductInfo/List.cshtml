@@ -5,8 +5,8 @@
 
 
 <div>
-    <div class="row">
-        <h2>Catalog</h2>
+        <div class="row">
+            <h2>Catalog</h2>
         </div>
         <div class="row">
             <div class="col-sm-3">
@@ -58,14 +58,15 @@
 
             </div>
 
-            @foreach (var p in Model.ProductInfo) {
-                @Html.Partial("ProductSummary",p)
+            @foreach (var p in Model.ProductInfo)
+            {
+                @Html.Partial("ProductSummary", p)
             }
 
 
         </div>
         <div class="row">
-            <div>@Html.PageLinks(Model.PagingInfo, X => Url.Action("List", new { Page = X })) </div>
+            <div>@Html.PageLinks(Model.PagingInfo, X => Url.Action("List", new { Page = X, category = Model.CurrentCategory })) </div>
 
         </div>
     </div>

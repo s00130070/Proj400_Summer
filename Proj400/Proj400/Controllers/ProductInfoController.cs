@@ -17,22 +17,23 @@ namespace Proj400.Controllers
         {
             this.repo = productRepository;
         }
-        public ViewResult List(int page = 1){
+        public ViewResult List(string category, int page = 1){
             ProductsList productsList = new ProductsList {
 
-             ProductInfo = repo.ProductInfos
+                ProductInfo = repo.ProductInfos
+             .Where(p => category == null || p.product_Category == category)
             .OrderBy(p => p.product_ID)
-            .Skip((page -1)* PageSize)
+            .Skip((page - 1) * PageSize)
             .Take(PageSize),
-            PagingInfo = new PagingInfo {
-                CurrentPage = page,
-                ItemsPerPage= PageSize,
-                TotalItems =repo.ProductInfos.Count()
-            }
+                PagingInfo = new PagingInfo {
+                    CurrentPage = page,
+                    ItemsPerPage = PageSize,
+                    //TotalItems =repo.ProductInfos.Count() counts everything in database issue was wouldnt work correctly when was filtered by catagory would still enable pagnation for products not in cat
+                    TotalItems = category == null ?repo.ProductInfos.Count(): repo.ProductInfos.Where(e=> e.product_Category== category).Count()
+            },
+                CurrentCategory = category
             };
             return View(productsList);
-            //return View(repo.ProductInfos.OrderBy(p => p.product_ID)
-            //    .Skip((page - 1) * PageSize).Take(PageSize));
         }
 
         public ViewResult Home() {

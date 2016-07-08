@@ -5,9 +5,9 @@ using System.Web;
 
 namespace Proj400.Models.Entities
 {
-    public class CartRow
+    public class CartIndex
     {
-        public ProductInfo Product { get; set; }
-        public int product_Quantity { get; set; }
+        public Cart Cart { get; set; }
+        public string ReturnUrl { get; set; }
     }
 }

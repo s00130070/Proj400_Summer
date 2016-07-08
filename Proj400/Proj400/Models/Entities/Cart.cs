@@ -17,11 +17,11 @@ namespace Proj400.Models.Entities
 
             if (row == null)
             {
-                rowCollection.Add(new CartRow { Product = product, Quantity = quantity });
+                rowCollection.Add(new CartRow { Product = product, product_Quantity = quantity });
             }
             else
             {
-                row.Quantity += quantity;
+                row.product_Quantity += quantity;
 
             }
         }
@@ -32,7 +32,7 @@ namespace Proj400.Models.Entities
         }
 
         public decimal ComputeToatalValue() {
-            return rowCollection.Sum(e => e.Product.product_Price * e.Product.product_Quantity);
+            return rowCollection.Sum(e => e.Product.product_Price * e.product_Quantity);
         }
         public void Clear() {
             rowCollection.Clear();

@@ -10,5 +10,6 @@ namespace Proj400.Models.Entities
     {
         public IEnumerable<ProductInfo> ProductInfo { get; set;}
         public PagingInfo PagingInfo { get; set; }
+        public string CurrentCategory { get; set; }
     }
 }

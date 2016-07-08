@@ -152,9 +152,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
     <Compile Include="Concrete\EFProductRepository.cs" />
+    <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\NavagationController.cs" />
     <Compile Include="Controllers\ProductInfoController.cs" />
     <Compile Include="HtmlHelpers\PaginationHelper.cs" />
     <Compile Include="Models\Entities\Cart.cs" />
+    <Compile Include="Models\Entities\CartIndex.cs" />
     <Compile Include="Models\Entities\CartRow.cs" />
     <Compile Include="Models\Entities\PagingInfo.cs" />
     <Compile Include="Models\Entities\ProductInfo.cs" />
@@ -175,6 +178,8 @@
     <Content Include="Views\ProductInfo\Home.cshtml" />
     <Content Include="Views\ProductInfo\Cart.cshtml" />
     <Content Include="Views\ProductInfo\ProductSummary.cshtml" />
+    <Content Include="Views\Navagation\Menu.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
