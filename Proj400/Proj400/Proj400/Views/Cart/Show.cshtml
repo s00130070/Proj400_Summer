@@ -1,0 +1,107 @@
+﻿<div class="wrapper">
+    <div class="response container">
+        <div class="content">
+            <h1><img src="@Url.Content(String.Format("/img/{0}.png", TempData["icon"]))" alt=""> @TempData["header"].ToString() </h1>
+        </div>
+    </div>
+</div>
+<div class="col-sm-4 well text-center">
+    <aside class="drawer dark">
+        <header>
+            <div class="content compact">
+                <h3>Your Details :</h3>
+            </div>
+        </header>
+        <article class="content compact">
+            <section>
+                <h5>Transaction</h5>
+                <table cellpadding="0" cellspacing="0">
+                    <tbody>
+                        <tr>
+                            <td>Order id</td>
+                            <td>@ViewBag.Transaction.Id</td>
+                        </tr>
+
+                        <tr>
+                            <td>amount</td>
+                            <td>@ViewBag.Transaction.Amount</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </section>
+            <section>
+                <h5>Payment</h5>
+                <table cellpadding="0" cellspacing="0">
+                    <tbody>
+
+                        <tr>
+                            <td>last 4 digits on card</td>
+                            <td>@ViewBag.Transaction.CreditCard.LastFour</td>
+                        </tr>
+                        <tr>
+                            <td>card_type</td>
+                            <td>@ViewBag.Transaction.CreditCard.CardType</td>
+                        </tr>
+                        <tr>
+                            <td>expiration_date</td>
+                            <td>@ViewBag.Transaction.CreditCard.ExpirationDate</td>
+                        </tr>
+                        <tr>
+                            <td>cardholder_name</td>
+                            <td>@ViewBag.Transaction.CreditCard.CardholderName</td>
+                        </tr>
+                        <tr>
+                            <td>customer_location</td>
+                            <td>@ViewBag.Transaction.CreditCard.CustomerLocation</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            @{
+                if (@ViewBag.Transaction.Customer.Id != null)
+                {
+                    <section>
+                        <h5>Customer Details</h5>
+                        <table cellpadding="0" cellspacing="0">
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>@ViewBag.Transaction.Customer.Id</td>
+                                </tr>
+                                <tr>
+                                    <td>first_name</td>
+                                    <td>@ViewBag.Transaction.Customer.FirstName</td>
+                                </tr>
+                                <tr>
+                                    <td>last_name</td>
+                                    <td>@ViewBag.Transaction.Customer.LastName</td>
+                                </tr>
+                                <tr>
+                                    <td>email</td>
+                                    <td>@ViewBag.Transaction.Customer.Email</td>
+                                </tr>
+                                <tr>
+                                    <td>company</td>
+                                    <td>@ViewBag.Transaction.Customer.Company</td>
+                                </tr>
+                                <tr>
+                                    <td>website</td>
+                                    <td>@ViewBag.Transaction.Customer.Website</td>
+                                </tr>
+                                <tr>
+                                    <td>phone</td>
+                                    <td>@ViewBag.Transaction.Customer.Phone</td>
+                                </tr>
+                                <tr>
+                                    <td>fax</td>
+                                    <td>@ViewBag.Transaction.Customer.Fax</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                }
+            }
+        </article>
+    </aside>
+</div>

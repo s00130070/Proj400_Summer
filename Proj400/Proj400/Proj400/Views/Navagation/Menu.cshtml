@@ -1,0 +1,25 @@
+﻿
+@model IEnumerable<string>
+<div class="well">
+    <h3 class="text-center">Catagories</h3>
+    <a href="@Url.Action("List", "ProductInfo")" class="btn btn-block btn-default btn-lg">All</a>
+
+    @foreach (var link in Model)
+    {
+        @Html.RouteLink(link, new
+{
+    controller = "ProductInfo",
+    action = "List",
+    category = link,
+    page = 1
+}, new
+{
+    @class = "btn btn-block btn-default btn-lg"
+})
+    }
+
+    @*enumerated category names and creating links for each of them using RouteLink method. Similar to
+        ActionLink, dif allows you to supply a set of name/value pairs which are taken into account when creating the URL in the
+        routing configuration.*@
+
+</div>

@@ -1,0 +1,13 @@
+﻿@model Proj400.Models.ProductInfo
+
+@{
+    ViewBag.Title = "Admin: Edit Product" + @Model.product_Name;
+    Layout = "∼/Views/Shared/_AdminLayout.cshtml";
+}
+<h1>Edit @Model.product_Name</h1>
+@using (Html.BeginForm())
+{
+    @Html.EditorForModel()
+    <input type="submit" value="Save" />
+    @Html.ActionLink("Cancel and return to List", "Index")
+}
