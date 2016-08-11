@@ -74,7 +74,7 @@
                         <div  class="text-right">
                             @using (Html.BeginForm("Delete", "Admin"))
                             {
-                                @Html.Hidden("product_ID", item.product_Name)
+                                @Html.Hidden("product_ID", item.product_ID)
                                 <input type="submit"
                                        class="btn btn-danger btn-xs"
                                        value="Delete" />
@@ -86,6 +86,6 @@
         </table>
     </div>
     <div class="panel-footer">
-        @Html.ActionLink("Add a new product", "Create", null, new { @class = "btn btn-success" })
+        @Html.ActionLink("Add a new product", "CreateProduct", null, new { @class = "btn btn-success" })
     </div>
 </div>

@@ -12,9 +12,11 @@ namespace Proj400.Controllers
     public class CartController : Controller
     {
         private IProductsInfosRepository repository;
+        private IOrderProcessor orderProcessor;
 
-        public CartController(IProductsInfosRepository repo) {
+        public CartController(IProductsInfosRepository repo, IOrderProcessor orderProcess) {
             repository = repo;
+            orderProcessor = orderProcess;
         }
 
         public ViewResult Index(Cart cart, string returnUrl) {

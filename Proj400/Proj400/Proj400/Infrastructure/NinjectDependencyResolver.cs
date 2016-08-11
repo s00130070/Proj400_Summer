@@ -9,6 +9,7 @@ using Moq;
 using Proj400.Abstract;
 using Proj400.Models;
 using Proj400.Concrete;
+using System.Configuration;
 
 namespace Proj400.Infrastructure
 {
@@ -32,6 +33,16 @@ namespace Proj400.Infrastructure
         {
             // put bindings here
             kernel.Bind<IProductsInfosRepository>().To<EFProductRepository>();
+
+
+            EmailOrder.EmailSettings emailSettings = new EmailOrder.EmailSettings
+            {
+                WriteAsFile = bool.Parse(ConfigurationManager.AppSettings["Email.WriteAsFile"] ?? "false")
+            };
+            kernel.Bind<IOrderProcessor>().To<EmailOrder>()
+            .WithConstructorArgument("settings", emailSettings);
+
+
 
             //Fake Database
             //Mock<IProductsInfosRepository> mock = new Mock<IProductsInfosRepository>();
