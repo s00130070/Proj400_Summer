@@ -35,10 +35,16 @@ namespace Proj400.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(ProductInfo productInfo)
+        public ActionResult Edit(ProductInfo productInfo, HttpPostedFileBase image = null)
         {
             if (ModelState.IsValid)
             {
+                if (image != null)
+                {
+                    productInfo.Image_Mime_Type = image.ContentType;
+                    productInfo.Image_Data = new byte[image.ContentLength];
+                    image.InputStream.Read(productInfo.Image_Data, 0, image.ContentLength);
+                }
                 repository.updateProduct(productInfo);
                 TempData["message"] = string.Format("{0} has been updated", productInfo.product_Name);
                 return RedirectToAction("Index");

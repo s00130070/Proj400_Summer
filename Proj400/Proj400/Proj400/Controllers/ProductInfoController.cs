@@ -8,6 +8,7 @@ using Proj400.Models;
 
 namespace Proj400.Controllers
 {
+    [RequireHttps]
     public class ProductInfoController : Controller
     {
         private IProductsInfosRepository repo;
@@ -28,10 +29,10 @@ namespace Proj400.Controllers
             {
 
                 ProductInfo = repo.ProductInfos
-             .Where(p => category == null || p.product_Category == category)
-            .OrderBy(p => p.product_ID)
-            .Skip((page - 1) * PageSize)
-            .Take(PageSize),
+                .Where(p => category == null || p.product_Category == category)
+                .OrderBy(p => p.product_ID)
+                .Skip((page - 1) * PageSize)
+                .Take(PageSize),
                 PagingInfo = new PagingInfo
                 {
                     CurrentPage = page,
@@ -43,8 +44,24 @@ namespace Proj400.Controllers
             };
             return View(productsList);
         }
-        [RequireHttps]
-        public ViewResult Home() {
+
+        public FileContentResult GetImage(int product_ID)
+        {
+            ProductInfo product = repo.ProductInfos
+            .FirstOrDefault(x => x.product_ID == product_ID);
+            if (product != null)
+            {
+                return File(product.Image_Data, product.Image_Mime_Type);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+       
+        public ViewResult Home()
+        {
 
             return View("Home");
         }

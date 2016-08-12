@@ -1,4 +1,4 @@
-﻿@model Proj400.Models.Cart
+﻿@model Proj400.Models.CartIndex
 <div class="wrapper">
     <div class="checkout container">
         <header>
@@ -12,7 +12,7 @@
                     <div id="bt-dropin"></div>
                 </div>
                 @*<label value="Transamount"></label>*@
-
+                @*@Model.Cart.ComputeToatalValue().ToString("c")*@
                 <label for="amount">
                     <span class="input-label">Amount</span>
                     <div class="input-wrapper amount-wrapper">
@@ -20,7 +20,7 @@
                     </div>
                 </label>
             </section>
-            <button class="button btn-success" type="submit"><span>Test Transaction</span></button>
+            <button class="button btn-success" type="submit"><span>Purchase</span></button>
         </form>
     </div>
 </div>

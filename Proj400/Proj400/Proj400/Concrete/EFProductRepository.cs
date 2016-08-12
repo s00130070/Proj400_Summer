@@ -30,6 +30,8 @@ namespace Proj400.Concrete
                     dbEntry.product_Desc = productInfo.product_Desc;
                     dbEntry.product_Price = productInfo.product_Price;
                     dbEntry.product_Category = productInfo.product_Category;
+                    dbEntry.Image_Data = productInfo.Image_Data;
+                    dbEntry.Image_Mime_Type = productInfo.Image_Mime_Type;
                 }
             }
             context.SaveChanges();

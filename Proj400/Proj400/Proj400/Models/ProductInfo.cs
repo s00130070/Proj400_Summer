@@ -27,5 +27,8 @@ namespace Proj400.Models
         [Range(0.01, double.MaxValue, ErrorMessage = "Please enter a price")]
         public decimal product_Price { get; set; }
         public int product_Quantity { get; set; }
+
+        public byte[] Image_Data { get; set; }
+        public string Image_Mime_Type { get; set; }
     }
 }

@@ -6,27 +6,32 @@
 <div class="container">
     <table class="table">
         <thead>
-            <th>Product</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Subtotal</th>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Subtotal</th>
         </thead>
         <tbody>
             @foreach (var row in Model.Cart.Rows)
             {
                 <tr>
-                
+
                     <td>
-                       
+
                         <div class="media">
-                            <a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;"> </a>
+
+                            @if (@row.Product.Image_Data != null)
+                            {
+                                <div class=" pull-left">
+                                    <img class="img-thumbnail" style="width:100px; height:100px;" src="@Url.Action("GetImage", "ProductInfo",new { @row.Product.product_ID })" />
+                                </div>
+                            }
+                            @*<a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;"> </a>*@
                             <div class="media-body">
                                 <h4 class="media-heading"><a href="#">@row.Product.product_Name</a></h4>
                                 <h5 class="media-heading"> by <a href="#">@row.Product.product_Brand</a></h5>
                             </div>
                         </div>
-
-
                     </td>
                     <td>
                         @row.Product.product_Price.ToString("c")
@@ -38,40 +43,39 @@
                         @((row.product_Quantity * row.Product.product_Price).ToString("c"))
                     </td>
                     <td>
-                        @using (Html.BeginForm("RemoveFromCart","Cart")) {
-                            @Html.Hidden("Product_ID",row.Product.product_ID)
+                        @using (Html.BeginForm("RemoveFromCart", "Cart"))
+                        {
+                            @Html.Hidden("Product_ID", row.Product.product_ID)
                             @Html.HiddenFor(x => x.ReturnUrl)
-                                <input class="btn btn-danger btn-sm" type="submit" value="Remove" />
+                            <input class="btn btn-danger btn-sm" type="submit" value="Remove" />
                         }
-                     </td>
+                    </td>
 
                 </tr>
             }
         </tbody>
-                 <tr>
-                     <td><h3>Total</h3></td>
-                     <td>
-                         @Model.Cart.ComputeToatalValue().ToString("c")
-                     </td>
-                 </tr>
-                    <tr>
-                        <td>
-                            <button type="button" class="btn btn-default" href="@Model.ReturnUrl">
-                                <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
-                            </button>
-                        </td>
-                        <td>
+        <tr>
+            <td><h3>Total</h3></td>
+            <td>
+                @Model.Cart.ComputeToatalValue().ToString("c")
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button type="button" class="btn btn-default" href="@Model.ReturnUrl">
+                    <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+                </button>
+            </td>
+            <td>
 
-                    @Html.ActionLink("Checkout now", "CheckoutShipping", null, new {  @class = "btn btn-success" })
-                            @*<button type="button" class="btn btn-success">
-                                Checkout <span class="glyphicon glyphicon-play"></span>
-                            </button>*@
-                        </td>
-                    </tr>
+                @Html.ActionLink("Checkout now", "CheckoutShipping", null, new { @class = "btn btn-success" })
+                @*<button type="button" class="btn btn-success">
+                        Checkout <span class="glyphicon glyphicon-play"></span>
+                    </button>*@
+            </td>
+        </tr>
         <tfoot>
 
         </tfoot>
     </table>
 </div>
-
-

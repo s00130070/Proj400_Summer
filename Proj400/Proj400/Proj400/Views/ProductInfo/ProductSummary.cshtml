@@ -2,7 +2,15 @@
 
 <div class="col-sm-4 well">
     <h3>
-        <img src="~/img/1.jpg" style="width:100%; height:100%;">
+        @if (Model.Image_Data != null)
+        {
+            <div>
+                <img class="img-thumbnail" style="width:100px; height:100px;" src="@Url.Action("GetImage", "ProductInfo",new { Model.product_ID })" />
+            </div>
+        }
+
+
+        @*<img src="~/img/1.jpg" style="width:100%; height:100%;">*@
         <strong> @Model.product_Name</strong>
     </h3>
     <div><span class="pull-right label label-primary"> @Model.product_Price.ToString("c")</span></div>
