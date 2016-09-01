@@ -59,11 +59,31 @@ namespace Proj400.Controllers
             return View(new OrderInfo());
         }
 
+       
+
+        [HttpPost]
+        public ViewResult CheckoutShipping(Cart cart, OrderInfo orderInfo)
+        {
+            if (cart.Rows.Count() == 0)
+            {
+                ModelState.AddModelError("", "Sorry, your cart is empty!");
+            }
+            if (ModelState.IsValid)
+            {
+                orderProcessor.ProcessOrder(cart, orderInfo);
+                cart.Clear();
+                return View("NewCheckout");
+            }
+            else
+            {
+                return View(orderInfo);
+            }
+        }
+
         public ViewResult Payment()
         {
             return View("Payment");
         }
-
 
         //Braintree
         public IBraintreeConfiguration config = new BraintreeConfiguration();
@@ -78,7 +98,7 @@ namespace Proj400.Controllers
                                                                                     TransactionStatus.SUBMITTED_FOR_SETTLEMENT
                                                                                 };
 
-        public ActionResult New()
+        public ActionResult NewCheckout()
         {
             var gateway = config.GetGateway();
             var clientToken = gateway.ClientToken.generate();
@@ -98,7 +118,7 @@ namespace Proj400.Controllers
             catch (FormatException e)
             {
                 TempData["Flash"] = "Error: 81503: Amount is an invalid format.";
-                return RedirectToAction("New");
+                return RedirectToAction("NewCheckout");
             }
 
             var nonce = Request["payment_method_nonce"];
@@ -112,11 +132,11 @@ namespace Proj400.Controllers
             if (result.IsSuccess())
             {
                 Transaction transaction = result.Target;
-                return RedirectToAction("Show", new { id = transaction.Id });
+                return RedirectToAction("TransactionResult", new { id = transaction.Id });
             }
             else if (result.Transaction != null)
             {
-                return RedirectToAction("Show", new { id = result.Transaction.Id });
+                return RedirectToAction("TransactionResult", new { id = result.Transaction.Id });
             }
             else
             {
@@ -126,12 +146,12 @@ namespace Proj400.Controllers
                     errorMessages += "Error: " + (int)error.Code + " - " + error.Message + "\n";
                 }
                 TempData["Flash"] = errorMessages;
-                return RedirectToAction("New");
+                return RedirectToAction("NewCheckout");
             }
 
         }
 
-        public ActionResult Show(String id)
+        public ActionResult TransactionResult(String id)
         {
             var gateway = config.GetGateway();
             Transaction transaction = gateway.Transaction.Find(id);

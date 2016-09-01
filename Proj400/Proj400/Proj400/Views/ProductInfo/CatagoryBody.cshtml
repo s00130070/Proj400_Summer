@@ -1,0 +1,75 @@
+﻿@model Proj400.Models.ProductsList
+@{
+    ViewBag.Title = "Products";
+}
+
+
+<div>
+    <div class="row">
+        <h2>Catalog</h2>
+    </div>
+    @*<div class="row">
+        <div class="col-sm-3">
+
+            <div class="panel-group pull-left" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Brands
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            <h4>Sport</h4>
+
+                            <div class="funkyradio">
+                                <div class="funkyradio-default">
+                                    <input type="checkbox" name="checkbox" id="checkbox1" checked />
+                                    <label for="checkbox1">First Option default</label>
+                                </div>
+                                <div class="funkyradio-primary">
+                                    <input type="checkbox" name="checkbox" id="checkbox2" checked />
+                                    <label for="checkbox2">Second Option primary</label>
+                                </div>
+                                <div class="funkyradio-success">
+                                    <input type="checkbox" name="checkbox" id="checkbox3" checked />
+                                    <label for="checkbox3">Third Option success</label>
+                                </div>
+                                <div class="funkyradio-danger">
+                                    <input type="checkbox" name="checkbox" id="checkbox4" checked />
+                                    <label for="checkbox4">Fourth Option danger</label>
+                                </div>
+                                <div class="funkyradio-warning">
+                                    <input type="checkbox" name="checkbox" id="checkbox5" checked />
+                                    <label for="checkbox5">Fifth Option warning</label>
+                                </div>
+                                <div class="funkyradio-info">
+                                    <input type="checkbox" name="checkbox" id="checkbox6" checked />
+                                    <label for="checkbox6">Sixth Option info</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>*@
+
+        @foreach (var p in Model.ProductInfo)
+            {
+            @Html.Partial("ProductSummary", p)
+        }
+
+
+    </div>
+    <div class="row">
+        <div>@Html.PageLinks(Model.PagingInfo, X => Url.Action("CatagoryBody", new { Page = X, category = Model.CurrentCategory })) </div>
+
+    </div>
+</div>
+
+
+

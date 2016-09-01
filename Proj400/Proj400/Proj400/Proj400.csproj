@@ -318,7 +318,7 @@
     <Content Include="Scripts\jquery-1.12.4.js" />
     <Content Include="Scripts\jquery-1.12.4.min.js" />
     <Content Include="Scripts\jquery-1.12.4.min.map" />
-    <Content Include="Scripts\demo.js" />
+    <Content Include="Scripts\braintreejs.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-3.1.0.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -376,12 +376,11 @@
     <Content Include="Views\Cart\CartNavSummary.cshtml" />
     <Content Include="Views\Cart\CheckoutShipping.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
-    <Content Include="Views\Cart\New.cshtml" />
-    <Content Include="Views\Cart\Show.cshtml" />
+    <Content Include="Views\Cart\NewCheckout.cshtml" />
+    <Content Include="Views\Cart\TransactionResult.cshtml" />
     <Content Include="Views\Navagation\Menu.cshtml" />
-    <Content Include="Views\ProductInfo\Cart.cshtml" />
     <Content Include="Views\ProductInfo\Home.cshtml" />
-    <Content Include="Views\ProductInfo\List.cshtml" />
+    <Content Include="Views\ProductInfo\CatagoryBody.cshtml" />
     <Content Include="Views\ProductInfo\ProductSummary.cshtml" />
     <None Include="Service References\ASPSMSX2\aspsmsx2.wsdl" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />

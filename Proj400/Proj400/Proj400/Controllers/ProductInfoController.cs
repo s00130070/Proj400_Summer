@@ -23,14 +23,14 @@ namespace Proj400.Controllers
         //    return View(repo.ProductInfos);
         //}
 
-        public ViewResult List(string category, int page = 1)
+        public ViewResult CatagoryBody(string category, int page = 1)
         {
             ProductsList productsList = new ProductsList
             {
 
                 ProductInfo = repo.ProductInfos
-                .Where(p => category == null || p.product_Category == category)
-                .OrderBy(p => p.product_ID)
+                .Where(x => category == null || x.product_Category == category)
+                .OrderBy(x => x.product_ID)
                 .Skip((page - 1) * PageSize)
                 .Take(PageSize),
                 PagingInfo = new PagingInfo

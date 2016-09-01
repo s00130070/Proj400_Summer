@@ -15,7 +15,7 @@ namespace Proj400
             routes.MapRoute(null, "", new
             {
                 Controller = "ProductInfo",
-                Action = "List",
+                Action = "CatagoryBody",
                 catagory = (string)null,
                 page = 1
             });

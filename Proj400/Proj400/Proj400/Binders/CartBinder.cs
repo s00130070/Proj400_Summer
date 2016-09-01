@@ -16,7 +16,7 @@ namespace Proj400.Binders
             //ControllerContext provides access to all the information that the controller class has
             //ModelBindingContext gives you information about the model object you are being asked to build
 
-            //get the cart from the session
+            //getting the cart from the session
             Cart cart = null;
             if (ControllerContext.HttpContext.Session!= null)
             {

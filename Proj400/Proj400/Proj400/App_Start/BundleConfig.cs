@@ -29,7 +29,7 @@ namespace Proj400
                       "~/Content/funky.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/otherScripts").Include(
-                 "~/Scripts/demo.js"));
+                 "~/Scripts/braintreejs.js"));
         }
     }
 }
